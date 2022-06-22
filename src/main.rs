@@ -16,6 +16,11 @@ fn main() -> anyhow::Result<()> {
         .map(|i| i.trim())
         .collect();
 
+    if branches.len() == 0 {
+        eprintln!("No branches found.");
+        return Ok(());
+    }
+
     let ms = MultiSelect::with_theme(&ColorfulTheme::default())
         .items(&branches)
         .interact()?;
